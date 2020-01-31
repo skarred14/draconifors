@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+    ares-api:
+        build:
+            context: ./ares-api/
+            dockerfile: dev.Dockerfile
+        command: npm run dev
+        volumes:
+            - ./ares-api/src:/app/src:delegated
+            - ./ares-api/circuits:/app/circuits:delegated
+            - ./ares-api/test:/app/test:delegated
+        environment:
+            VIRTUAL_HOST: ares-api.docker
+        depends_on:
+            - ares-api-watch
+        ports:
+            - 8080:80
+    
+    ares-api-watch:
+        build:
+            context: ./ares-api/
+            dockerfile: dev.Dockerfile
+        volumes:
+            - ./ares-api/src:/app/src:delegated
+            - ./ares-api/dist:/app/dist:delegated
+        command: npm run build:watch
