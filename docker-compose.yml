@@ -25,4 +25,5 @@ services:
             - ./ares-api/src:/app/src:delegated
             - ./ares-api/dist:/app/dist:delegated
             - ./ares-api/circuits:/app/circuits:delegated
+            - ./ares-api/test-circuits:/app/circuits:delegated
         command: npm run bootstrap
