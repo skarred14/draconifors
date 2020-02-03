@@ -1,0 +1,62 @@
+{
+  "mainCode": "{\n}\n",
+  "signalName2Idx": {
+    "one": 0,
+    "main.i": 2,
+    "main.j": 3,
+    "main.out": 1
+  },
+  "components": [
+    {
+      "name": "main",
+      "params": {},
+      "template": "X",
+      "inputSignals": 2
+    }
+  ],
+  "componentName2Idx": {
+    "main": 0
+  },
+  "signals": [
+    {
+      "names": [
+        "one"
+      ],
+      "triggerComponents": []
+    },
+    {
+      "names": [
+        "main.out"
+      ],
+      "triggerComponents": []
+    },
+    {
+      "names": [
+        "main.i"
+      ],
+      "triggerComponents": [
+        0
+      ]
+    },
+    {
+      "names": [
+        "main.j"
+      ],
+      "triggerComponents": [
+        0
+      ]
+    }
+  ],
+  "constraints": [],
+  "templates": {
+    "X": "function(ctx) {\n    if (bigInt((bigInt(ctx.getSignal(\"i\", [])).eq(bigInt(\"0\")) ? 1 : 0)).neq(bigInt(0))) {\n    {\n        ctx.setSignal(\"out\", [], ctx.getSignal(\"i\", []));\n    }\n\n    } else {\n    {\n        ctx.setSignal(\"out\", [], ctx.getSignal(\"j\", []));\n    }\n\n    }\n}\n"
+  },
+  "functions": {},
+  "nPrvInputs": 0,
+  "nPubInputs": 2,
+  "nInputs": 2,
+  "nOutputs": 1,
+  "nVars": 4,
+  "nConstants": 0,
+  "nSignals": 4
+}
