@@ -15,7 +15,7 @@
     - [ ] Implements a multiple proof composition in Zexe (n proofs on BLS12-377 --> 1 proof on SW6)
     - [ ] Implements a verifier smart contract for SW6 proof (template + script connected to Zexe)
     - [ ] Tests SW6 with EIP1962 and Geth/Parity integration
-- [ ] milestonr M3:
+- [ ] milestone M3:
     - [ ] Implements HG6 curve in Zexe
     - [ ] Adapts M2 to HG6
     - [ ] Modify EIP1962 and tests
