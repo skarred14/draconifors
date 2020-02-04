@@ -3,7 +3,7 @@
 ## Milestones
 - [ ] milestone M1:
     - [ ] Implements Poseidon hash in Solidity
-    - [ ] Experiments with Poseidon hash in Circom with examples
+    - [x] Experiments with Poseidon hash in Circom with examples
     - [ ] Experiments with KimLeeOh Snarkjs implementation with examples
     - [ ] Implements Radish circuits in Circom with Poseidon hash and KimLeeOh protocol
     - [ ] Creates docker containers for Circom and Snarkjs and architectures Ares
