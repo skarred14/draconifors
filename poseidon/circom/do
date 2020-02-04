@@ -16,8 +16,8 @@ witness() {
     snarkjs calculatewitness
 }
 
-proof() {
-    snarkjs prove
+prove() {
+    snarkjs proof
 }
 
 verify() {
