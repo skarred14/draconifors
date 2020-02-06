@@ -21,8 +21,9 @@ services:
         build:
             context: ./ares-api/
             dockerfile: dev.Dockerfile
+        command: npm run build:watch
         volumes:
             - ./ares-api/src:/app/src:delegated
             - ./ares-api/dist:/app/dist:delegated
             - ./ares-api/circuits:/app/circuits:delegated
-        command: npm run bootstrap
+

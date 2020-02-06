@@ -93,3 +93,6 @@ typings/
 .DS_Store
 
 dist
+
+artifacts
+

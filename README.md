@@ -61,6 +61,28 @@
         - [ ] verifier smart contract
         - [ ] Modify EIP1962 and tests
 
+## Prerequisites
+
+1.  Install [Docker for Mac](https://www.docker.com/docker-mac)
+
+1.  Install and start [dotdocker](https://github.com/aj-may/dotdocker)
+
+    `dotdocker start`)
+
+## Development/Test environment
+
+1. Run `docker-compose up -d` to run the ares containers. Alternately, run `docker-compose up` to watch the logs of the `ares-api` and `ares-api-watch` containers
+
+1. All circom circuits in `ares-api/circuits/*.circom` are auto-compiled using the circom npm library. Corresponding outputs are captured as `ares-api/circuits/artifacts/*.json` files. The circuits are auto-generated during watch process in `ares-api-watch` container
+
+1. To re-run the circuit compilation process, add a circuit to `ares-api/circuits/`. Then run `docker-compose restart && docker-compose logs -f ares-api-watch` to get the logs of the build process. For development convenience, the test circuits from the circom repo have been added to `ares-api/circuits/`
+
+1. To reset the process, run `make duke-nukem` at the root of the directory
+
+## Troubleshooting
+
+1. If reset doesn't work, run `docker-compose system prune -f && docker-compose build --no-cache && docker-compose up -d`
+
 ## References
 - [Poseidon hash](https://eprint.iacr.org/2019/458.pdf) circuit and contract on [circomlib](https://github.com/iden3/circomlib)
 - [KimLeeOh protocol](https://eprint.iacr.org/2019/586.pdf) on [snarkjs](https://github.com/iden3/snarkjs/tree/master/src)
