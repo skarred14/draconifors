@@ -18,7 +18,7 @@
     "validate": "npm run lint && npm run lint:md"
   },
   "author": "",
-  "license": "CC0",
+  "license": "",
   "dependencies": {
     "@babel/runtime": "^7.6.2",
     "body-parser": "1.19.0",
