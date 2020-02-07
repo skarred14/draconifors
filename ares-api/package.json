@@ -28,7 +28,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "express": "^4.17.1",
     "mongodb": "^3.3.2",
-    "snarkjs": "^0.1.20",
+    "snarkjs": "git+https://github.com/iden3/snarkjs.git",
     "supertest": "^4.0.2"
   },
   "devDependencies": {
