@@ -12,7 +12,6 @@ services:
             - ./ares-api/circuits:/app/circuits:delegated
         environment:
             VIRTUAL_HOST: ares-api.docker
-            PROVING_SCHEME: 'kimleeoh'
         depends_on:
             - ares-api-watch
         ports:

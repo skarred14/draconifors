@@ -10,8 +10,8 @@
     - [ ] Implements Radish circuits in Circom with Poseidon hash and KimLeeOh protocol
     - [ ] Creates docker containers for Circom and Snarkjs and architectures Ares
         - [x] Docker build process clean-up
-        - [ ] Run setup and compile as a part of watch process
-        - [ ] Update readme for adding new circuits
+        - [x] Run setup and compile as a part of watch process
+        - [x] Update readme for adding new circuits
         - [ ] Add routes for proof generation
     - [ ] Compares Poseidon hash to SHA256 used in Radish now (number of constraints and gas gos)
         - [x] Explanation doc of Poseidon hash
@@ -77,7 +77,7 @@
 
 1. Run `docker-compose up -d` to run the ares containers. Alternately, run `docker-compose up` to watch the logs of the `ares-api` and `ares-api-watch` containers
 
-1. All circom circuits in `ares-api/circuits/*.circom` are auto-compiled using the circom npm library. Corresponding outputs are captured as `ares-api/circuits/artifacts/*.json` files. The circuits are auto-generated during watch process in `ares-api-watch` container
+1. All circom circuits in `ares-api/circuits/*.circom` are auto-compiled and auto setup using the circom npm library and setup using "Kimleeoh" proving scheme. Corresponding outputs are captured as `ares-api/circuits/artifacts/*.json` files. The circuits are auto-compiled and setup during watch process in `ares-api-watch` container
 
 1. To re-run the circuit compilation process, add a circuit to `ares-api/circuits/`. Then run `docker-compose restart && docker-compose logs -f ares-api-watch` to get the logs of the build process. For development convenience, the test circuits from the circom repo have been added to `ares-api/circuits/`
 
