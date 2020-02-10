@@ -77,7 +77,7 @@
 
 1. Run `docker-compose up -d` to run the ares containers. Alternately, run `docker-compose up` to watch the logs of the `ares-api` and `ares-api-watch` containers
 
-1. All circom circuits in `ares-api/circuits/*.circom` are auto-compiled and auto setup using the circom npm library and setup using "Kimleeoh" proving scheme. Corresponding outputs are captured as `ares-api/circuits/artifacts/*.json` files. The circuits are auto-compiled and setup during watch process in `ares-api-watch` container
+1. All circom circuits in `ares-api/circuits/*.circom` are auto-compiled and auto setup using the circom npm library and setup using "Kimleeoh" proving scheme. Corresponding outputs are captured as `ares-api/artifacts/*.json` files. The circuits are auto-compiled and setup during watch process in `ares-api-watch` container
 
 1. To re-run the circuit compilation process, add a circuit to `ares-api/circuits/`. Then run `docker-compose restart && docker-compose logs -f ares-api-watch` to get the logs of the build process. For development convenience, the test circuits from the circom repo have been added to `ares-api/circuits/`
 
