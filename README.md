@@ -61,6 +61,10 @@
         - [ ] verifier smart contract
         - [ ] Modify EIP1962 and tests
 
+- [ ] milestone M4:
+    - [ ] implement MPC trusted setup for Radish34 (HG6/KimLeeOh)
+      - [ ] implement code for MPC powers of tau on HG6 curve
+      - [ ] implement code for MPC Radish34 KimLeeOh polynomials on HG6 curve
 ## Prerequisites
 
 1.  Install [Docker for Mac](https://www.docker.com/docker-mac)
@@ -92,3 +96,4 @@
 - EIP1962 implementations in [Rust](https://github.com/matter-labs/eip1962) and [C++](https://github.com/matter-labs/eip1962_cpp)
 - Tests of EIP1962 on [Parity+Waffle](https://github.com/matter-labs/eip1962_lib/tree/v0.9) and [Geth+Truffle](https://github.com/matter-labs/eip1962_lib/tree/v0.9).
 - HG6 curve [paper]().
+- MPC trusted setup [paper](https://eprint.iacr.org/2017/1050.pdf) and code ([Rust](https://github.com/kobigurk/phase2-bn254/), [C++](https://github.com/AztecProtocol/Setup))
