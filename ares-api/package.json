@@ -7,7 +7,7 @@
     "start": "node ./dist/index.js",
     "dev": "nodemon ./dist/index.js",
     "build": "cod-scripts build",
-    "circuits": "onchange -a '**/*.circom' -- node './dist/compile.js' {{changed}}",
+    "circuits": "onchange -a '**/*.circom' -- node './dist/init.js' {{changed}}",
     "build:watch": "npm run build -- --watch & npm run circuits",
     "test": "jest --watchAll --verbose=true --silent",
     "test:ci": "jest --verbose=true --silent --ci --coverage",
