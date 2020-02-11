@@ -10,8 +10,7 @@ services:
             - ./ares-api/src:/app/src:delegated
             - ./ares-api/dist:/app/dist:delegated
             - ./ares-api/circuits:/app/circuits:delegated
-            - ./ares-api/utils:/app/utils:delegated
-            - ./ares-api/routes:/app/routes:delegated
+            - ./ares-api/artifacts:/app/artifacts:delegated
         environment:
             VIRTUAL_HOST: ares-api.docker
         depends_on:
@@ -28,7 +27,5 @@ services:
             - ./ares-api/src:/app/src:delegated
             - ./ares-api/dist:/app/dist:delegated
             - ./ares-api/circuits:/app/circuits:delegated
-            - ./ares-api/utils:/app/utils:delegated
-            - ./ares-api/routes:/app/routes:delegated
             - ./ares-api/artifacts:/app/artifacts:delegated
 
