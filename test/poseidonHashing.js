@@ -3,7 +3,7 @@ const utils = require("../ares-api/src/utils/utils");
 const assert = chai.assert;
 
 // Before making the call to the poseidon API. 
-describe("Poseidon Hashing Offchain test", () => {
+describe("Poseidon Hashing routing test", () => {
     route =  "http://ares_api:3001/poseidonhashing/"
 
     it("Should check constrain of hash([1, 2]", async () => {
@@ -15,7 +15,6 @@ describe("Poseidon Hashing Offchain test", () => {
                     ,element: [1,2]
                 }
         res = await utils.fetcher(route,'POST', data)
-        console.log(res)
         assert.equal('12242166908188651009877250812424843524687801523336557272219921456462821518061', res);
     });
 

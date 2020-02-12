@@ -15,3 +15,4 @@ test-api:
 	# Follow the containers progress
 	docker logs ares_test -f  
 
+
