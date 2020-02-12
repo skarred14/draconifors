@@ -11,9 +11,9 @@ router.post('/', async (req, res, next) => {
         let hash = await createHash(t, nRoundsF, nRoundsP, seed);
         let result = await hash(element);
         result = JSON.stringify(result)
-        res.send(result)        
+        res.status(200).send(result)        
     } catch (err) {
-        return next(err);
+        res.status(500)
     }
 });
 

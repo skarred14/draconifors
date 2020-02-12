@@ -11,6 +11,8 @@ test-api:
 	# Build the test container
 	-- docker-compose -f docker-compose.test.yml down
 	docker-compose -f docker-compose.test.yml  up -d --build
+	
+	sleep 10
 
 	# Follow the containers progress
 	docker logs ares_test -f  

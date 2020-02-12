@@ -6,7 +6,7 @@ const assert = chai.assert;
 describe("Poseidon Hashing routing test", () => {
     route =  "http://ares_api:3001/poseidonhashing/"
 
-    it("Should check constrain of hash([1, 2]", async () => {
+    it("Should check constrain of hash([1, 2])", async () => {
         data = { 
                     t: 6
                     ,nRoundsF: 8
@@ -18,7 +18,7 @@ describe("Poseidon Hashing routing test", () => {
         assert.equal('12242166908188651009877250812424843524687801523336557272219921456462821518061', res);
     });
 
-   it("Should check constrain of hash([3, 4]", async () => {
+   it("Should check constrain of hash([3, 4])", async () => {
         data = { 
                     t: 6
                     ,nRoundsF: 8
