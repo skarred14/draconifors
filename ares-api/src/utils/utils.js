@@ -1,7 +1,7 @@
 
 const fetch = require('node-fetch');
 
-fetch = async(route, method, data) =>{
+fetcher = async(route, method, data) =>{
     let result
     await fetch(route, {
       method: method,
@@ -16,4 +16,4 @@ fetch = async(route, method, data) =>{
     return result
 }
 
-module.exports = { fetch }
+module.exports = { fetcher }

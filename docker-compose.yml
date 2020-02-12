@@ -1,31 +1,40 @@
-version: '3'
+version: '3.5'
 
 services:
-    ares-api:
+    ares_api:
         build:
             context: ./ares-api/
-            dockerfile: dev.Dockerfile
-        command: npm run dev
+        container_name: ares_api
         volumes:
-            - ./ares-api/src:/app/src:delegated
-            - ./ares-api/dist:/app/dist:delegated
-            - ./ares-api/circuits:/app/circuits:delegated
-            - ./ares-api/artifacts:/app/artifacts:delegated
-        environment:
-            VIRTUAL_HOST: ares-api.docker
+            - ./ares-api/src:/usr/src/app/src:delegated
+            - ./ares-api/dist:/usr/src/app/dist:delegated
+            - ./ares-api/circuits:/usr/src/app/circuits:delegated
+            - ./ares-api/artifacts:/usr/src/app/artifacts:delegated    
+            - /var/run/docker.sock:/var/run/docker.sock
         depends_on:
-            - ares-api-watch
+            - ares_api_watch
+        external_links:
+            - ares_test
         ports:
-            - 8080:80
+            - 3001:3001
+        command: npm run dev       
+        networks: 
+            - ares_backend
     
-    ares-api-watch:
+    ares_api_watch:
         build:
-            context: ./ares-api/
-            dockerfile: dev.Dockerfile
+            context: ./ares-api
+            dockerfile: dockerfile
         command: npm run build:watch
+        container_name: ares_api_watch
         volumes:
-            - ./ares-api/src:/app/src:delegated
-            - ./ares-api/dist:/app/dist:delegated
-            - ./ares-api/circuits:/app/circuits:delegated
-            - ./ares-api/artifacts:/app/artifacts:delegated
+            - ./ares-api/src:/usr/src/app/src:delegated
+            - ./ares-api/dist:/usr/src/app/dist:delegated
+            - ./ares-api/circuits:/usr/src/app/circuits:delegated
+            - ./ares-api/artifacts:/usr/src/app/artifacts:delegated
+        networks: 
+            - ares_backend
 
+networks:
+  ares_backend:
+    external: true
