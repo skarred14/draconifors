@@ -1,20 +1,43 @@
-import express from 'express';
+import Koa from'koa'
+import route from 'koa-route'
 import { createHash } from '../utils/poseidonHash';
-
-const router = express.Router();
 
 BigInt.prototype.toJSON = function() { return this.toString(); };
 
-router.post('/', async (req, res, next) => {
-    const { t, nRoundsF, nRoundsP, seed, element } = req.body;
-    try {
-        let hash = await createHash(t, nRoundsF, nRoundsP, seed);
-        let result = await hash(element);
-        result = JSON.stringify(result)
-        res.status(200).send(result)        
-    } catch (err) {
-        res.status(500)
-    }
-});
+module.exports = async () => {
+    const app = new Koa()
 
-export default router;
+    app.use(route.post('/',  async (ctx) => {
+        let t = await ctx.request.body.t
+        let nRoundsF = await ctx.request.body.nRoundsF
+        let nRoundsP = await ctx.request.body.nRoundsP
+        let seed = await ctx.request.body.seed
+        let element = await ctx.request.body.element
+
+        console.log(t)
+
+        try {
+            let hash = await createHash(t, nRoundsF, nRoundsP, seed);
+            let result = await hash(element);
+            result = JSON.stringify(result)
+        } catch (err) {
+            ctx.status = 500
+            ctx.body = {
+                data: {
+                    result: err
+                }
+            }
+        }
+        finally{
+            ctx.status = 200
+            ctx.body = {
+                data: {
+                    result: result
+                }
+            }
+        }
+    }))
+
+    return app
+}
+

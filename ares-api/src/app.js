@@ -1,18 +1,29 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import poseidon_hashing from './routes/poseidon_hashing';
+import Koa from 'koa';
+import cors from '@koa/cors';
+import mount from 'koa-mount';
+import bodyParser from'koa-bodyparser';
+import poseidon from './routes/poseidon_hashing';
 
 
-const app = express();
+const main = async () => {
+    const app = new Koa()
 
-app.use(cors());
-app.use(bodyParser.json({ limit: '2mb' }));
-app.use(bodyParser.urlencoded({ limit: '2mb', extended: false }));
+    // Parse incoming requests data
+    app.use(bodyParser())
 
-app.get('/healthcheck', (req, res) => res.sendStatus(200));
-app.use('/poseidonhashing', poseidon_hashing);
+    // Allow CORS headers
+    app.use(cors({
+        credentials: true
+    }))
 
+    app.use(mount('/poseidon', poseidon()))
+    return app
+}
 
-export default app;
-module.exports = app;
+if (require.main === module) {
+    main()
+    .then(
+      (app) => app.listen(3001)
+    )
+  }
+  
