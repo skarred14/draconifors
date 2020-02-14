@@ -2,7 +2,7 @@ import ganache from "ganache-cli";
 import Web3 from "web3";
 import chai from "chai";
 import contract from"../../contracts/poseidon.json";
-import PoseidonHashing from"../utils/poseidonHash";
+import { createHash } from"../utils/poseidonHash";
 const assert = chai.assert;
 
 // Before making the call to the poseidon API. 
@@ -34,7 +34,7 @@ describe("Poseidon Smart contract test", () => {
 
         const res = await poseidon.methods.poseidon([randomHex]).call();
 
-        const hash = PoseidonHashing.createHash(6, 8, 57);
+        const hash = createHash(6, 8, 57, "poseidon");
 
         const res2 = hash([randomHex]);
 
@@ -42,7 +42,7 @@ describe("Poseidon Smart contract test", () => {
     });
 
     it("Should calculate the gas cost of Poseidon, for 1 bit, 512 bits and 1536 bits, correctly", async () => {
-        await (poseidon.methods.poseidon([randomHex])).estimateGas({}, function(error, gasAmount){
+        await (poseidon.methods.poseidon([1])).estimateGas({}, function(error, gasAmount){
             let gasCostA =  gasAmount/3 //512
             let gasCostB =  gasAmount/6 //256 
             let gasCostC =  gasAmount/1536 //1 bit
