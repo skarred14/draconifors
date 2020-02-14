@@ -42,6 +42,7 @@
             - [x] optimize final exp
         - [x] test to compile, setup, prove verify a proof with KimLeeOh
             - [x] optimize proof verification
+    - [x] Modify Circom to compile circuits for bls12-377 
     - [ ] Implements a mapping tool from Snarkjs to zexey
         - [ ] map snarkjs proof to zexey input
         - [ ] map snarkjs verification key to zexey input
