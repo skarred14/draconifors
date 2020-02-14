@@ -16,7 +16,7 @@ const main = async () => {
         credentials: true
     }))
 
-    app.use(mount('/poseidon', poseidon()))
+    app.use(mount('/poseidon',await poseidon()))
     return app
 }
 

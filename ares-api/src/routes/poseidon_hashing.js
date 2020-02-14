@@ -6,25 +6,22 @@ BigInt.prototype.toJSON = function() { return this.toString(); };
 
 module.exports = async () => {
     const app = new Koa()
-
     app.use(route.post('/',  async (ctx) => {
-        let t = await ctx.request.body.t
-        let nRoundsF = await ctx.request.body.nRoundsF
-        let nRoundsP = await ctx.request.body.nRoundsP
-        let seed = await ctx.request.body.seed
-        let element = await ctx.request.body.element
-
-        console.log(t)
+        let t =  ctx.request.body.t
+        let nRoundsF =  ctx.request.body.nRoundsF
+        let nRoundsP =  ctx.request.body.nRoundsP
+        let seed =  ctx.request.body.seed
+        let element =  ctx.request.body.element
+        let result
 
         try {
             let hash = await createHash(t, nRoundsF, nRoundsP, seed);
-            let result = await hash(element);
-            result = JSON.stringify(result)
+            result = await hash(element);
         } catch (err) {
             ctx.status = 500
             ctx.body = {
                 data: {
-                    result: err
+                    err: err
                 }
             }
         }

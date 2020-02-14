@@ -4,7 +4,7 @@ const assert = chai.assert;
 
 // Before making the call to the poseidon API. 
 describe("Poseidon Hashing routing test", () => {
-    route =  "http://ares_api:3001/poseidonhashing/"
+    route =  "http://ares_api:3001/poseidon/"
 
     it("Should check constrain of hash([1, 2])", async () => {
         data = { 
@@ -15,7 +15,7 @@ describe("Poseidon Hashing routing test", () => {
                     ,element: [1,2]
                 }
         res = await utils.fetcher(route,'POST', data)
-        assert.equal('12242166908188651009877250812424843524687801523336557272219921456462821518061', res);
+        assert.equal('12242166908188651009877250812424843524687801523336557272219921456462821518061', res.data.result);
     });
 
    it("Should check constrain of hash([3, 4])", async () => {
@@ -28,7 +28,7 @@ describe("Poseidon Hashing routing test", () => {
                 }
 
         res = await utils.fetcher(route,'POST', data)
-        assert.equal('17185195740979599334254027721507328033796809509313949281114643312710535000993', res);
+        assert.equal('17185195740979599334254027721507328033796809509313949281114643312710535000993', res.data.result);
     });
 });
 
