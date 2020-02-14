@@ -2,9 +2,9 @@
 
 ## Milestones
 - [ ] milestone M1:
-    - [ ] Poseidon hash in Solidity
-        - [ ] Implements Poseidon hash in Solidity
-        - [ ] gas cost of the implementation
+    - [x] Poseidon hash in Solidity
+        - [x] Implements Poseidon hash in Solidity
+        - [x] gas cost of the implementation
     - [x] Experiments with Poseidon hash in Circom with examples
     - [x] Experiments with KimLeeOh Snarkjs implementation with examples
     - [ ] Implements Radish circuits in Circom with Poseidon hash and KimLeeOh protocol
@@ -13,10 +13,10 @@
         - [x] Run setup and compile as a part of watch process
         - [x] Update readme for adding new circuits
         - [ ] Add routes for proof generation
-    - [ ] Compares Poseidon hash to SHA256 used in Radish now (number of constraints and gas gos)
+    - [x] Compares Poseidon hash to SHA256 used in Radish now (number of constraints and gas gos)
         - [x] Explanation doc of Poseidon hash
         - [x] Number of R1CS comparison
-        - [ ] Gas cost comparison
+        - [x] Gas cost comparison
     - [ ] Compares KimLeeOh to GM17 used in Radish now (proof generation time, proof size, verification time, (updatable) setup size)
         - [ ] proof generation time: GM17 vs KimLeeOh
             - [ ] numbers of operations (theory)
@@ -35,11 +35,13 @@
                 - [ ] implementation
 
 - [ ] milestone M2:
-    - [ ] Implements BLS12-377 curve in Snarkjs
+    - [x] Implements BLS12-377 curve in Snarkjs
         - [x] implement and test fields algebra
         - [x] implement and test curve algebra
         - [x] implement and test pairing computation
-        - [ ] test to compile, setup, prove verify a proof with KimLeeOh
+            - [x] optimize final exp
+        - [x] test to compile, setup, prove verify a proof with KimLeeOh
+            - [x] optimize proof verification
     - [ ] Implements a mapping tool from Snarkjs to zexey
         - [ ] map snarkjs proof to zexey input
         - [ ] map snarkjs verification key to zexey input
