@@ -1,8 +1,8 @@
-const ganache = require("ganache-cli");
-const Web3 = require("web3");
-const chai = require("chai");
-const contract = require("../contracts/poseidon.json");
-const PoseidonHashing = require("../ares-api/src/utils/poseidonHash");
+import ganache from "ganache-cli";
+import Web3 from "web3";
+import chai from "chai";
+import contract from"../../contracts/poseidon.json";
+import PoseidonHashing from"../utils/poseidonHash";
 const assert = chai.assert;
 
 // Before making the call to the poseidon API. 
@@ -29,7 +29,7 @@ describe("Poseidon Smart contract test", () => {
         })
     });
 
-    it("Shold calculate the Poseidon hash correctly", async () => {
+    it("Should calculate the Poseidon hash correctly", async () => {
         randomHex = 5
 
         const res = await poseidon.methods.poseidon([randomHex]).call();

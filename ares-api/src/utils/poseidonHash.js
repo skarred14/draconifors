@@ -1,8 +1,7 @@
-const bn128 = require("snarkjs").bn128;
-const bigInt = require("snarkjs").bigInt;
-const blake2b = require('blake2b');
-const assert = require("assert");
-const F = bn128.Fr;
+import zkSnark from "snarkjs";
+import blake2b from'blake2b';
+import assert from "assert";
+const F = zkSnark.bn128.Fr;
 
 const SEED = "poseidon";
 const NROUNDSF = 8;
@@ -14,7 +13,7 @@ function getPseudoRandom(seed, n) {
     let input = Buffer.from(seed);
     let h = blake2b(32).update(input).digest()
     while (res.length<n) {
-        const n = F.affine(bigInt.leBuff2int(h));
+        const n = F.affine(zkSnark.bigInt.leBuff2int(h));
         res.push(n);
         h = blake2b(32).update(h).digest()
     }
@@ -32,7 +31,7 @@ function allDifferent(v) {
     return true;
 }
 
-exports.getMatrix = (t, seed, nRounds) => {
+export const getMatrix = (t, seed, nRounds) => {
     if (typeof seed === "undefined") seed = SEED;
     if (typeof nRounds === "undefined") nRounds = NROUNDSF + NROUNDSP;
     if (typeof t === "undefined") t = T;
@@ -54,7 +53,7 @@ exports.getMatrix = (t, seed, nRounds) => {
     return M;
 };
 
-exports.getConstants = (t, seed, nRounds) => {
+export const getConstants = (t, seed, nRounds) => {
     if (typeof seed === "undefined") seed = SEED;
     if (typeof nRounds === "undefined") nRounds = NROUNDSF + NROUNDSP;
     if (typeof t === "undefined") t = T;
@@ -83,7 +82,7 @@ function mix(state, M) {
     for (let i=0; i<state.length; i++) state[i] = newState[i];
 }
 
-exports.createHash = (t, nRoundsF, nRoundsP, seed) => {
+export const createHash = (t, nRoundsF, nRoundsP, seed) => {
 
     if (typeof seed === "undefined") seed = SEED;
     if (typeof nRoundsF === "undefined") nRoundsF = NROUNDSF;
@@ -97,7 +96,7 @@ exports.createHash = (t, nRoundsF, nRoundsP, seed) => {
         let state = [];
         assert(inputs.length <= t);
         assert(inputs.length > 0);
-        for (let i=0; i<inputs.length; i++) state[i] = bigInt(inputs[i]);
+        for (let i=0; i<inputs.length; i++) state[i] = zkSnark.bigInt(inputs[i]);
         for (let i=inputs.length; i<t; i++) state[i] = F.zero;
 
         for (let i=0; i< nRoundsF + nRoundsP; i++) {

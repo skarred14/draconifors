@@ -2,10 +2,10 @@ version: "3.5"
 
 services:
   ares_test:
-    build: ./
+    build: ./ares-api
     command: npm test
     container_name: ares_test
-    restart: always
+    restart: on-failure
     external_links:
       - ares_api
     ports:

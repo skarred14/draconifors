@@ -17,7 +17,7 @@ services:
             - ares_test
         ports:
             - 3001:3001
-        command: npm run dev       
+        command: "npm run dev"
         networks: 
             - ares_backend
     
@@ -25,7 +25,7 @@ services:
         build:
             context: ./ares-api
             dockerfile: dockerfile
-        command: npm run build:watch
+        command: "npm run build:watch"
         container_name: ares_api_watch
         volumes:
             - ./ares-api/src:/usr/src/app/src:delegated

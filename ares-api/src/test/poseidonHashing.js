@@ -1,5 +1,5 @@
-const chai = require("chai");
-const utils = require("../ares-api/src/utils/utils");
+import chai from "chai";
+import utils from "../utils/utils";
 const assert = chai.assert;
 
 // Before making the call to the poseidon API. 
