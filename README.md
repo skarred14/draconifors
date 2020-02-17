@@ -2,9 +2,9 @@
 
 ## Milestones
 - [ ] milestone M1:
-    - [ ] Poseidon hash in Solidity
-        - [ ] Implements Poseidon hash in Solidity
-        - [ ] gas cost of the implementation
+    - [x] Poseidon hash in Solidity
+        - [x] Implements Poseidon hash in Solidity
+        - [x] gas cost of the implementation
     - [x] Experiments with Poseidon hash in Circom with examples
     - [x] Experiments with KimLeeOh Snarkjs implementation with examples
     - [ ] Implements Radish circuits in Circom with Poseidon hash and KimLeeOh protocol
@@ -13,11 +13,11 @@
         - [x] Run setup and compile as a part of watch process
         - [x] Update readme for adding new circuits
         - [ ] Add routes for proof generation
-    - [ ] Compdraconifors Poseidon hash to SHA256 used in Radish now (number of constraints and gas gos)
+    - [ ] Compares Poseidon hash to SHA256 used in Radish now (number of constraints and gas gos)
         - [x] Explanation doc of Poseidon hash
         - [x] Number of R1CS comparison
         - [ ] Gas cost comparison
-    - [ ] Compdraconifors KimLeeOh to GM17 used in Radish now (proof generation time, proof size, verification time, (updatable) setup size)
+    - [ ] Compares KimLeeOh to GM17 used in Radish now (proof generation time, proof size, verification time, (updatable) setup size)
         - [ ] proof generation time: GM17 vs KimLeeOh
             - [ ] numbers of operations (theory)
             - [ ] timing of snarkjs poseidon circuit proving (implementation)
