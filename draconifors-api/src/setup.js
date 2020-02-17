@@ -7,7 +7,7 @@ const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const fileInput = process.argv[2];
 
-// To use this file for set up, run: docker-compose exec ares-api node dist/setup.js circuit_name
+// To use this file for set up, run: docker-compose exec draconifors-api node dist/setup.js circuit_name
 const main = async() => {
     const compiledCircuit = JSON.parse(await readFile(path.join(process.cwd(), 'artifacts', `${fileInput}.json`)), 'utf-8');
     const circuitInstance = new zkSnark.Circuit(compiledCircuit);
