@@ -1,10 +1,3 @@
 {
-    "presets": [
-      ["@babel/preset-env", {
-        "targets": {
-          "node": "11.15"
-        }
-      }]
-    ]
+  "presets": ["@babel/preset-env"]
 }
-
