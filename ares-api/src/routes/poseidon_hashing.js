@@ -1,5 +1,6 @@
 import Koa from'koa'
 import route from 'koa-route'
+import '@babel/polyfill'
 import { createHash } from '../utils/poseidonHash';
 
 BigInt.prototype.toJSON = function() { return this.toString(); };
