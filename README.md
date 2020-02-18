@@ -71,7 +71,7 @@
 
 1.  Install and start [dotdocker](https://github.com/aj-may/dotdocker)
 
-    `dotdocker start`)
+    `dotdocker start`
 
 ## Development/Test environment
 
@@ -80,6 +80,8 @@
 1. All circom circuits in `ares-api/circuits/*.circom` are auto-compiled and auto setup using the circom npm library and setup using "Kimleeoh" proving scheme. Corresponding outputs are captured as `ares-api/artifacts/*.json` files. The circuits are auto-compiled and setup during watch process in `ares-api-watch` container
 
 1. To re-run the circuit compilation process, add a circuit to `ares-api/circuits/`. Then run `docker-compose restart && docker-compose logs -f ares-api-watch` to get the logs of the build process. For development convenience, the test circuits from the circom repo have been added to `ares-api/circuits/`
+
+1. To exec/attach to a running container, run `docker-compose exec [SERVICE_NAME] /bin/sh`
 
 1. To reset the process, run `make duke-nukem` at the root of the directory
 
