@@ -7,18 +7,16 @@ import path from 'path';
 import '@babel/polyfill';
 
 const readFile = promisify(fs.readFile);
-const fileInput = process.argv[2];
 
-// To use this file for set up, run: docker-compose exec ares-api node dist/setup.js circuit_name
-const main = async () => {
+export default async fileInput => {
   const vkVerifierStr = JSON.parse(
-    await readFile(path.resolve(__dirname, '../artifacts', `${fileInput}_vk_verifier.json`)),
+    await readFile(path.resolve(__dirname, '../../artifacts', `${fileInput}_vk_verifier.json`)),
     'utf8',
   );
   const vkVerifier = zkSnark.unstringifyBigInts(vkVerifierStr);
 
   let template = await readFile(
-    path.resolve(__dirname, '../contracts/templates', 'verifier_kimleeoh_bn128.template.sol'),
+    path.resolve(__dirname, '../../contracts/templates', 'verifier_kimleeoh_bn128.template.sol'),
     'utf8',
   );
 
@@ -60,9 +58,5 @@ const main = async () => {
   }
   template = template.replace('<%vk_ic_pts%>', vi);
 
-  // return template;
-  console.log(template);
-  console.log('🏁 Export verifier is done!');
+  return template;
 };
-
-main();

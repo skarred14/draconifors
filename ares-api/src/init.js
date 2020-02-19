@@ -2,7 +2,8 @@ import compile from 'circom';
 import fs from 'fs';
 import { promisify } from 'util';
 import path from 'path';
-import zkSnark from 'snarkjs';
+import verifierTemplate from './utils/verifierGen';
+import kloSetup from './utils/setup';
 import '@babel/polyfill';
 
 const readFile = promisify(fs.readFile);
@@ -33,18 +34,27 @@ const main = async fileInput => {
       await readFile(path.join(process.cwd(), 'artifacts', `${fileInput}.json`)),
       'utf8',
     );
-    const circuitInstance = new zkSnark.Circuit(compiledCircuit);
-    const circuitSetup = await zkSnark.kimleeoh.setup(circuitInstance);
-    const circuitStrSetup = zkSnark.stringifyBigInts(circuitSetup);
+
+    const circuitSetup = await kloSetup(`${fileInput}`);
+
     await writeFile(
       path.join(process.cwd(), 'artifacts', `${fileInput}_vk_proof.json`),
-      JSON.stringify(circuitStrSetup.vk_proof, null, 2),
+      JSON.stringify(circuitSetup.vk_proof, null, 2),
     );
     await writeFile(
       path.join(process.cwd(), 'artifacts', `${fileInput}_vk_verifier.json`),
-      JSON.stringify(circuitStrSetup.vk_verifier, null, 2),
+      JSON.stringify(circuitSetup.vk_verifier, null, 2),
     );
     console.log('🔩  zkSnark circuit', `${fileInput}`, 'setup using KimLeeOh proving scheme!');
+
+    const template = await verifierTemplate(`${fileInput}`);
+
+    await writeFile(
+      path.join(process.cwd(), 'artifacts', `${fileInput}_verifier_klo_bn.sol`),
+      template,
+      'utf8',
+    );
+    console.log('🏁 Verifier contract for', `${fileInput}`, 'generated using KimeLeeOh scheme!');
   } catch (err) {
     console.log(err);
   }

@@ -12,7 +12,8 @@
         - [x] Docker build process clean-up
         - [x] Run setup and compile as a part of watch process
         - [x] Update readme for adding new circuits
-        - [ ] Add routes for proof generation
+        - [x] Add routes for proof generation
+        - [x] Add routes for verifier contract generation
     - [ ] Compares Poseidon hash to SHA256 used in Radish now (number of constraints and gas gos)
         - [x] Explanation doc of Poseidon hash
         - [x] Number of R1CS comparison
@@ -77,13 +78,25 @@
 
 1. Run `docker-compose up -d` to run the ares containers. Alternately, run `docker-compose up` to watch the logs of the `ares-api` and `ares-api-watch` containers
 
-1. All circom circuits in `ares-api/circuits/*.circom` are auto-compiled and auto setup using the circom npm library and setup using "Kimleeoh" proving scheme. Corresponding outputs are captured as `ares-api/artifacts/*.json` files. The circuits are auto-compiled and setup during watch process in `ares-api-watch` container
+1. All circom circuits in `ares-api/circuits/*.circom` are auto-compiled and auto setup using the circom npm library and setup using "Kimleeoh" proving scheme. Corresponding outputs are captured as `ares-api/artifacts/*.json` files. The circuits are auto-compiled, setup and verifier solidity contracts are generated during watch process in `ares-api-watch` container
 
 1. To re-run the circuit compilation process, add a circuit to `ares-api/circuits/`. Then run `docker-compose restart && docker-compose logs -f ares-api-watch` to get the logs of the build process. For development convenience, the test circuits from the circom repo have been added to `ares-api/circuits/`
 
 1. To exec/attach to a running container, run `docker-compose exec [SERVICE_NAME] /bin/sh`
 
 1. To reset the process, run `make duke-nukem` at the root of the directory
+
+## How to use Ares-Api
+
+1. Run `make test-api` on root, to run tests against the routes available on Ares-Api
+
+1. Following routes are available:
+
+- Healthcheck: Returns status of the koa service. Example: `curl -X GET http://localhost:3001/healthcheck`
+
+- Poseidon hashing: Returns poseidon hash based on the input data arguments. Example: `curl -d '{"t":6, "nRoundsF":8, "nRoundsP":57, "seed":"poseidon", "element":[1,2]}' -X POST http://localhost:3001/poseidon`
+
+- Proof generation: Returns generated proof, public signals, off chain verification of proof based on the input data arguments. Example: `curl -d '{"circuitName":"multiplier", "witnessInputs": {"a": "2", "b": "4"}}' -X POST http://localhost:3001/generate-proof`
 
 ## Troubleshooting
 
@@ -99,3 +112,4 @@
 - Tests of EIP1962 on [Parity+Waffle](https://github.com/matter-labs/eip1962_lib/tree/v0.9) and [Geth+Truffle](https://github.com/matter-labs/eip1962_lib/tree/v0.9).
 - HG6 curve [paper]().
 - MPC trusted setup [paper](https://eprint.iacr.org/2017/1050.pdf) and code ([Rust](https://github.com/kobigurk/phase2-bn254/), [C++](https://github.com/AztecProtocol/Setup))
+- [Snarkjs Cli for verifier solidity contract](https://github.com/iden3/snarkjs/blob/master/cli.js)
