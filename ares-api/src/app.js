@@ -4,6 +4,7 @@ import mount from 'koa-mount';
 import bodyParser from 'koa-bodyparser';
 import poseidon from './routes/poseidon_hashing';
 import healthcheck from './routes/healthcheck';
+import generateProof from './routes/generate_proof';
 import '@babel/polyfill';
 
 const main = async () => {
@@ -19,10 +20,11 @@ const main = async () => {
     }),
   );
 
-  app.use(mount('/healthcheck', await healthcheck()));
-  app.use(mount('/poseidon', await poseidon()));
-  return app;
-};
+    app.use(mount('/healthcheck', await healthcheck()));
+    app.use(mount('/poseidon',await poseidon()));
+    app.use(mount('/generate-proof', await generateProof()));
+    return app;
+}
 
 if (require.main === module) {
   main().then(app => app.listen(3001));

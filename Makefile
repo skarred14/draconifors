@@ -7,12 +7,14 @@ test-api:
 	
 	# Build the API
 	docker-compose -f docker-compose.yml down --remove-orphans && docker-compose up -d --build
+	
+	sleep 5s
 
 	# Build the test container
 	-- docker-compose -f docker-compose.test.yml down
 	docker-compose -f docker-compose.test.yml  up -d --build
 	
-	sleep 10
+
 
 	# Follow the containers progress
 	docker logs ares_test -f  
