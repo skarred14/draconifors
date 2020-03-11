@@ -1,23 +1,24 @@
 version: "3.5"
 
 services:
-  ares_test:
-    build: ./ares-api
+  draconifors_test:
+    image: draconifors-api-test
+    build: ./draconifors-api
     command: npm test
-    container_name: ares_test
+    container_name: draconifors_test
     restart: on-failure
     external_links:
-      - ares_api
+      - draconifors_api
     ports:
       - 3002:3002
     volumes:
-      - ./ares-api/src:/usr/src/app/src:delegated
-      - ./ares-api/dist:/usr/src/app/dist:delegated
-      - ./ares-api/circuits:/usr/src/apppp/circuits:delegated
-      - ./ares-api/artifacts:/usr/src/app/artifacts:delegated
+      - ./draconifors-api/src:/usr/src/app/src:delegated
+      - ./draconifors-api/dist:/usr/src/app/dist:delegated
+      - ./draconifors-api/circuits:/usr/src/apppp/circuits:delegated
+      - ./draconifors-api/artifacts:/usr/src/app/artifacts:delegated
     networks:
-      - ares_backend  
+      - draconifors_backend  
 
 networks:
-  ares_backend:
+  draconifors_backend:
     external: true

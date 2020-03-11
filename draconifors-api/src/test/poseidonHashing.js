@@ -5,7 +5,7 @@ const { assert } = chai;
 
 // Before making the call to the poseidon API.
 describe('Poseidon Hashing routing test', () => {
-  const route = 'http://ares_api:3001/poseidon/';
+  const route = 'http://draconifors_api:3001/poseidon/';
   let data;
   let res;
 
