@@ -1,41 +1,41 @@
 version: '3.5'
 
 services:
-    draconiforce_api:
-        image: draconiforce-api
+    draconifors_api:
+        image: draconifors-api
         build:
-            context: ./draconiforce-api/
-        container_name: draconiforce_api
+            context: ./draconifors-api/
+        container_name: draconifors_api
         volumes:
-            - ./draconiforce-api/src:/usr/src/app/src:delegated
-            - ./draconiforce-api/dist:/usr/src/app/dist:delegated
-            - ./draconiforce-api/circuits:/usr/src/app/circuits:delegated
-            - ./draconiforce-api/artifacts:/usr/src/app/artifacts:delegated    
+            - ./draconifors-api/src:/usr/src/app/src:delegated
+            - ./draconifors-api/dist:/usr/src/app/dist:delegated
+            - ./draconifors-api/circuits:/usr/src/app/circuits:delegated
+            - ./draconifors-api/artifacts:/usr/src/app/artifacts:delegated    
             - /var/run/docker.sock:/var/run/docker.sock
         depends_on:
-            - draconiforce_api_watch
+            - draconifors_api_watch
         external_links:
-            - draconiforce_test
+            - draconifors_test
         ports:
             - 3001:3001
         command: "npm run dev"
         networks: 
-            - draconiforce_backend
+            - draconifors_backend
     
-    draconiforce_api_watch:
-        image: draconiforce-api-watch
+    draconifors_api_watch:
+        image: draconifors-api-watch
         build:
-            context: ./draconiforce-api
+            context: ./draconifors-api
         command: "npm run build:watch"
-        container_name: draconiforce_api_watch
+        container_name: draconifors_api_watch
         volumes:
-            - ./draconiforce-api/src:/usr/src/app/src:delegated
-            - ./draconiforce-api/dist:/usr/src/app/dist:delegated
-            - ./draconiforce-api/circuits:/usr/src/app/circuits:delegated
-            - ./draconiforce-api/artifacts:/usr/src/app/artifacts:delegated
+            - ./draconifors-api/src:/usr/src/app/src:delegated
+            - ./draconifors-api/dist:/usr/src/app/dist:delegated
+            - ./draconifors-api/circuits:/usr/src/app/circuits:delegated
+            - ./draconifors-api/artifacts:/usr/src/app/artifacts:delegated
         networks: 
-            - draconiforce_backend
+            - draconifors_backend
 
 networks:
-  draconiforce_backend:
+  draconifors_backend:
     external: true

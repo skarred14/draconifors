@@ -1,24 +1,24 @@
 version: "3.5"
 
 services:
-  draconiforce_test:
-    image: draconiforce-api-test
-    build: ./draconiforce-api
+  draconifors_test:
+    image: draconifors-api-test
+    build: ./draconifors-api
     command: npm test
-    container_name: draconiforce_test
+    container_name: draconifors_test
     restart: on-failure
     external_links:
-      - draconiforce_api
+      - draconifors_api
     ports:
       - 3002:3002
     volumes:
-      - ./draconiforce-api/src:/usr/src/app/src:delegated
-      - ./draconiforce-api/dist:/usr/src/app/dist:delegated
-      - ./draconiforce-api/circuits:/usr/src/apppp/circuits:delegated
-      - ./draconiforce-api/artifacts:/usr/src/app/artifacts:delegated
+      - ./draconifors-api/src:/usr/src/app/src:delegated
+      - ./draconifors-api/dist:/usr/src/app/dist:delegated
+      - ./draconifors-api/circuits:/usr/src/apppp/circuits:delegated
+      - ./draconifors-api/artifacts:/usr/src/app/artifacts:delegated
     networks:
-      - draconiforce_backend  
+      - draconifors_backend  
 
 networks:
-  draconiforce_backend:
+  draconifors_backend:
     external: true

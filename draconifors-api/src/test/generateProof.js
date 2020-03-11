@@ -4,7 +4,7 @@ const assert = chai.assert;
 
 // Before making the call to the proof generation API. 
 describe("Proof generation routing test", () => {
-    let route =  "http://draconiforce_api:3001/generate-proof/"
+    let route =  "http://draconifors_api:3001/generate-proof/"
     let data
     let res
 

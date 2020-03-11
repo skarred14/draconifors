@@ -3,7 +3,7 @@ duke-nukem:
 
 test-api:
 	# Init the external network dddd
-	-- docker network create draconiforce_backend
+	-- docker network create draconifors_backend
 	
 	# Build the API
 	docker-compose -f docker-compose.yml down --remove-orphans && docker-compose up -d --build
@@ -17,6 +17,6 @@ test-api:
 
 
 	# Follow the containers progress
-	docker logs draconiforce_test -f  
+	docker logs draconifors_test -f  
 
 

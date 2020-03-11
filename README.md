@@ -1,4 +1,4 @@
-# draconiforce
+# draconifors
 
 ## Milestones
 - [ ] milestone M1:
@@ -8,7 +8,7 @@
     - [x] Experiments with Poseidon hash in Circom with examples
     - [x] Experiments with KimLeeOh Snarkjs implementation with examples
     - [ ] Implements Radish circuits in Circom with Poseidon hash and KimLeeOh protocol
-    - [ ] Creates docker containers for Circom and Snarkjs and architectures draconiforce
+    - [ ] Creates docker containers for Circom and Snarkjs and architectures draconifors
         - [x] Docker build process clean-up
         - [x] Run setup and compile as a part of watch process
         - [x] Update readme for adding new circuits
@@ -76,19 +76,19 @@
 
 ## Development/Test environment
 
-1. Run `docker-compose up -d` to run the draconiforce containers. Alternately, run `docker-compose up` to watch the logs of the `draconiforce-api` and `draconiforce-api-watch` containers
+1. Run `docker-compose up -d` to run the draconifors containers. Alternately, run `docker-compose up` to watch the logs of the `draconifors-api` and `draconifors-api-watch` containers
 
-1. All circom circuits in `draconiforce-api/circuits/*.circom` are auto-compiled and auto setup using the circom npm library and setup using "Kimleeoh" proving scheme. Corresponding outputs are captured as `draconiforce-api/artifacts/*.json` files. The circuits are auto-compiled, setup and verifier solidity contracts are generated during watch process in `draconiforce-api-watch` container
+1. All circom circuits in `draconifors-api/circuits/*.circom` are auto-compiled and auto setup using the circom npm library and setup using "Kimleeoh" proving scheme. Corresponding outputs are captured as `draconifors-api/artifacts/*.json` files. The circuits are auto-compiled, setup and verifier solidity contracts are generated during watch process in `draconifors-api-watch` container
 
-1. To re-run the circuit compilation process, add a circuit to `draconiforce-api/circuits/`. Then run `docker-compose restart && docker-compose logs -f draconiforce-api-watch` to get the logs of the build process. For development convenience, the test circuits from the circom repo have been added to `draconiforce-api/circuits/`
+1. To re-run the circuit compilation process, add a circuit to `draconifors-api/circuits/`. Then run `docker-compose restart && docker-compose logs -f draconifors-api-watch` to get the logs of the build process. For development convenience, the test circuits from the circom repo have been added to `draconifors-api/circuits/`
 
 1. To exec/attach to a running container, run `docker-compose exec [SERVICE_NAME] /bin/sh`
 
 1. To reset the process, run `make duke-nukem` at the root of the directory
 
-## How to use draconiforce-Api
+## How to use draconifors-Api
 
-1. Run `make test-api` on root, to run tests against the routes available on draconiforce-Api
+1. Run `make test-api` on root, to run tests against the routes available on draconifors-Api
 
 1. Following routes are available:
 
