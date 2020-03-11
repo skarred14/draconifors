@@ -1,7 +1,7 @@
 {
   "name": "draconifors",
   "version": "1.0.0",
-  "description": "draconifors Microservice",
+  "description": "Draconifors Microservice",
   "main": "src/app.js",
   "scripts": {
     "start": "node ./dist/app.js",
