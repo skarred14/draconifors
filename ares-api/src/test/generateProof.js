@@ -1,5 +1,5 @@
 import chai from "chai";
-import {fetcher} from "../utils/utils";
+import fetcher from "../utils/utils";
 const assert = chai.assert;
 
 // Before making the call to the proof generation API. 
@@ -18,4 +18,3 @@ describe("Proof generation routing test", () => {
         assert.equal(true, res.data.result.valid);
     });
 });
-
