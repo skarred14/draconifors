@@ -9,7 +9,7 @@
     "build": "cod-scripts build",
     "circuits": "onchange -a '**/*.circom' -- node './dist/init.js' {{changed}}",
     "build:watch": "npm run build -- --watch & npm run circuits",
-    "test": "mocha --require @babel/polyfill --require @babel/register --timeout 10000 src/test/*.js",
+    "test": "mocha --require @babel/polyfill --require @babel/register --timeout 5000 src/test/*.js",
     "fix": "npm run format && npm run lint -- --fix",
     "format": "prettier --write \"**/*.{json,css,scss,md}\"",
     "lint": "eslint .",
