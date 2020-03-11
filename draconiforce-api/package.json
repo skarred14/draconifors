@@ -1,7 +1,7 @@
 {
-  "name": "ares",
+  "name": "draconiforce",
   "version": "1.0.0",
-  "description": "Ares Microservice",
+  "description": "draconiforce Microservice",
   "main": "src/app.js",
   "scripts": {
     "start": "node ./dist/app.js",

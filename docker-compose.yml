@@ -1,40 +1,41 @@
 version: '3.5'
 
 services:
-    ares_api:
+    draconiforce_api:
+        image: draconiforce-api
         build:
-            context: ./ares-api/
-        container_name: ares_api
+            context: ./draconiforce-api/
+        container_name: draconiforce_api
         volumes:
-            - ./ares-api/src:/usr/src/app/src:delegated
-            - ./ares-api/dist:/usr/src/app/dist:delegated
-            - ./ares-api/circuits:/usr/src/app/circuits:delegated
-            - ./ares-api/artifacts:/usr/src/app/artifacts:delegated    
+            - ./draconiforce-api/src:/usr/src/app/src:delegated
+            - ./draconiforce-api/dist:/usr/src/app/dist:delegated
+            - ./draconiforce-api/circuits:/usr/src/app/circuits:delegated
+            - ./draconiforce-api/artifacts:/usr/src/app/artifacts:delegated    
             - /var/run/docker.sock:/var/run/docker.sock
         depends_on:
-            - ares_api_watch
+            - draconiforce_api_watch
         external_links:
-            - ares_test
+            - draconiforce_test
         ports:
             - 3001:3001
         command: "npm run dev"
         networks: 
-            - ares_backend
+            - draconiforce_backend
     
-    ares_api_watch:
+    draconiforce_api_watch:
+        image: draconiforce-api-watch
         build:
-            context: ./ares-api
-            dockerfile: dockerfile
+            context: ./draconiforce-api
         command: "npm run build:watch"
-        container_name: ares_api_watch
+        container_name: draconiforce_api_watch
         volumes:
-            - ./ares-api/src:/usr/src/app/src:delegated
-            - ./ares-api/dist:/usr/src/app/dist:delegated
-            - ./ares-api/circuits:/usr/src/app/circuits:delegated
-            - ./ares-api/artifacts:/usr/src/app/artifacts:delegated
+            - ./draconiforce-api/src:/usr/src/app/src:delegated
+            - ./draconiforce-api/dist:/usr/src/app/dist:delegated
+            - ./draconiforce-api/circuits:/usr/src/app/circuits:delegated
+            - ./draconiforce-api/artifacts:/usr/src/app/artifacts:delegated
         networks: 
-            - ares_backend
+            - draconiforce_backend
 
 networks:
-  ares_backend:
+  draconiforce_backend:
     external: true
