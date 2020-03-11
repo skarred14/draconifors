@@ -1,5 +1,5 @@
 import chai from 'chai';
-import { fetcher } from '../utils/utils';
+import fetcher from '../utils/utils';
 
 const { assert } = chai;
 

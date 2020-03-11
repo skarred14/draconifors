@@ -8,7 +8,7 @@ test-api:
 	# Build the API
 	docker-compose -f docker-compose.yml down --remove-orphans && docker-compose up -d --build
 	
-	sleep 5s
+	sleep 10s
 
 	# Build the test container
 	-- docker-compose -f docker-compose.test.yml down
