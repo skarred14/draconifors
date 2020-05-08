@@ -32,7 +32,7 @@
     "koa-route": "^3.2.0",
     "mongodb": "^3.3.2",
     "node-fetch": "^2.6.0",
-    "snarkjs": "git+https://github.com/iden3/snarkjs.git",
+    "snarkjs": "^0.1.31",
     "web3": "^1.2.6"
   },
   "devDependencies": {
